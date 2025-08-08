@@ -58,18 +58,6 @@ ostream& operator<<(ostream& cout, Pojas pojas)
 	return cout;
 }
 
-
-///*
-//za autentifikaciju svaki korisnik mora posjedovati lozinku koja sadrzi:
-//-   najmanje 7 znakova
-//-   velika i mala slova
-//-   najmanje jedan broj
-//-   najmanje jedan specijalni znak
-//za provjeru validnosti lozinke koristiti globalnu funkciju ValidirajLozinku, a unutar nje regex metode.
-//validacija lozinke se vrsi unutar konstruktora klase Korisnik, a u slucaju da nije validna
-//postaviti je na podrazumijevanu vrijednost: <VRIJEDNOST_NIJE_VALIDNA>
-//*/
-
 bool ValidirajLozinku(string lozinka)
 {
 	if (lozinka.size() < 7) return false;
@@ -233,7 +221,7 @@ public:
 
 class Tehnika {
 	char* _naziv;
-	//int se odnosi na ocjenu u opsegu od 1 – 5, a Datum na datum kada je ocijenjena odredjena tehnika 
+	//int se odnosi na ocjenu u opsegu od 1 â€“ 5, a Datum na datum kada je ocijenjena odredjena tehnika 
 	Kolekcija<int, Datum*, brojTehnika>* _ocjene;
 public:
 	Tehnika(const char* naziv) {
@@ -421,16 +409,6 @@ mutex mx;
 class KaratePolaznik : public Korisnik
 {
 	vector<Polaganje> _polozeniPojasevi;
-
-	///*nakon evidentiranja tehnike na bilo kojem pojasu kandidatu se salje email sa porukom:
-//FROM:info@karate.ba
-//TO: emailKorisnika
-//Postovani ime i prezime, evidentirana vam je thenika X za Y pojas. Dosadasnji uspjeh (prosjek ocjena)
-//na pojasu Y iznosi F, a ukupni uspjeh (prosjek ocjena) na svim pojasevima iznosi Z.
-//Pozdrav.
-//KARATE Team.
-//slanje email poruka implemenitrati koristeci zasebne thread-ove.
-//*/
 
 	void SaljiEmail(const Tehnika& tehnika, const Polaganje& polaganje)
 	{
